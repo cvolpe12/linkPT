@@ -31,3 +31,56 @@
     transform: rotate(360deg);
   }
 }
+
+.header {
+  border-bottom: 1px;
+  border-style: solid;
+  border-color: #979797;
+  /* border-bottom: 1px solid #979797; */
+  /* position: absolute;
+  left: 4.5%;
+  right: 4.91%;
+  top: 13.59%;
+  bottom: 86.29%; */
+}
+
+.contactHeader {
+  position: absolute;
+  /* height: 129px; */
+  /* left: 4.5%; */
+  /* right: 78.85%; */
+  /* top: calc(50% - 129px/2 - 996.5px); */
+
+  font-family: OpenSans;
+  font-size: 50px;
+  /* padding-bottom: 45px; */
+  line-height: 0px;
+
+  color: rgba(0, 0, 0, 0.967957);
+}
+
+.contactContainer {
+  border: 1px;
+  border-style: dashed;
+}
+
+.contact {
+  border: 1px;
+  border-style: dashed;
+  border-color: orange;
+}
+
+.contactName {
+  /* position: absolute; */
+  /* height: 82px;
+  left: 12.26%;
+  right: 78.88%;
+  top: calc(50% - 82px/2 - 672px); */
+
+  font-family: OpenSans;
+  font-size: 34px;
+  line-height: 70px;
+  letter-spacing: 1.9px;
+
+  color: #050505;
+}

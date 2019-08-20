@@ -70,6 +70,20 @@
   border-color: orange;
 }
 
+.addContact {
+  color: #757575;
+  font-size: 40px;
+  float: right;
+  /* width:120px;
+  height:60px; */
+  /* margin-left:35px; */
+  display:block;
+  background-color:initial;
+  /* color:white; */
+  border: none;
+  outline:none;
+}
+
 .contactName {
   /* position: absolute; */
   /* height: 82px;
@@ -83,4 +97,28 @@
   letter-spacing: 1.9px;
 
   color: #050505;
+}
+
+.background-overlay {
+  position: absolute;
+  left: 0.03%;
+  right: -0.03%;
+  top: 0%;
+  bottom: 0%;
+  z-index: 0;
+  background: rgba(10, 40, 38, 0.561453);
+}
+
+.overlay {
+  position: absolute;
+  left: 30.41%;
+  right: 30.32%;
+  top: 18.51%;
+  bottom: 11.9%;
+  z-index: 1;
+  background-color: rgba(255, 255, 255, 0.970024);
+  border: 1px solid #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 38px;
+  /* background: rgba(10, 40, 38, 0.561453); */
 }

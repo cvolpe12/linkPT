@@ -1,6 +1,8 @@
 import React from "react"
 import Contact from "../components/Contact"
 import { connect } from "react-redux"
+import { List, Image } from 'semantic-ui-react'
+
 
 class ContactContainer extends React.Component {
 
@@ -22,8 +24,9 @@ class ContactContainer extends React.Component {
   render() {
     return (
       <div className="contactContainer">
-
-        {this.renderContacts()}
+        <List>
+          {this.renderContacts()}
+        </List>
       </div>
     )
   }

@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux"
+import { List, Image } from 'semantic-ui-react'
+
 
 class Contact extends React.Component {
 
@@ -30,8 +32,15 @@ class Contact extends React.Component {
   render() {
     return (
       <div className="contact" style={this.hoverStyle()} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
-        <p className="contactName">{this.getName()}</p>
-        <p>{this.props.contact.email}</p>
+        <List.Item>
+          <Image avatar src={this.props.contact.photo} />
+          <List.Content>
+            <List.Header as='a'>{this.getName()}</List.Header>
+            <List.Description>
+              {this.props.contact.email}
+            </List.Description>
+          </List.Content>
+        </List.Item>
       </div>
     )
   }

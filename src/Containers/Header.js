@@ -7,9 +7,9 @@ class Header extends React.Component {
     showOverlay: false
   }
 
-  handleOverlay = e => {
+  handleOverlay = () => {
     console.log(this.state.showOverlay);
-    e.preventDefault()
+    // e.preventDefault()
     this.setState({
       showOverlay: !this.state.showOverlay
     })

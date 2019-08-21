@@ -36,7 +36,15 @@ class ContactForm extends React.Component {
 		.then(res => res.json())
 		.then((response) => {
       this.props.addContact(response)
-      this.props.overlayStatus(e)
+      this.props.overlayStatus()
+      console.log(this.props.allContacts);
+      this.setState({
+        first_name: '',
+        last_name: '',
+        phone: '',
+        email: '',
+        photo: null
+      })
     })
   }
 
@@ -71,7 +79,7 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    addContact: (contact) => {dispatch({type: "ADD_CONTACTS", payload: contact })}
+    addContact: (contact) => {dispatch({type: "ADD_CONTACT", payload: contact })}
   }
 }
 

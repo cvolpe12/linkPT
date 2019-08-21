@@ -24,7 +24,7 @@ class ContactContainer extends React.Component {
   render() {
     return (
       <div className="contactContainer">
-        <List>
+        <List divided verticalAlign='middle'>
           {this.renderContacts()}
         </List>
       </div>

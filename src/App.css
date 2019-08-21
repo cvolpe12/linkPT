@@ -122,3 +122,13 @@
   border-radius: 38px;
   /* background: rgba(10, 40, 38, 0.561453); */
 }
+
+.edit {
+  width: 20px;
+  height: auto;
+}
+
+.delete {
+  color: #EE7B7B;
+  font-size: 20px;
+}

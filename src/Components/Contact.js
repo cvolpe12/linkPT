@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment }  from "react";
 import { connect } from "react-redux"
 import { List, Image, Button } from 'semantic-ui-react'
 import editImage from '../edit.png'
@@ -16,6 +16,10 @@ class Contact extends React.Component {
   getName = () => {
     // method to concat first and last name of contact
     return this.props.contact.first_name + ' ' + this.props.contact.last_name
+  }
+
+  getInitials = () => {
+    return this.props.contact.first_name[0] + ' ' + this.props.contact.last_name[0]
   }
 
   toggleHover = (e) => {
@@ -44,6 +48,9 @@ class Contact extends React.Component {
     else {
       return {display: 'none'}
     }
+    // <List.Description className="contactDescription" style={this.showFeatures()}>
+    //   {this.props.contact.phone}
+    // </List.Description>
   }
 
   editContact = () => {
@@ -73,33 +80,48 @@ class Contact extends React.Component {
     this.props.addContacts(newContacts)
   }
 
+  renderPhoto = () => {
+    let contact = this.props.contact
+    if (contact.photo) {
+      return <Image className="contactPhoto column" src={contact.photo}/>
+    } else {
+      return (
+        <div className="avatar-circle column">
+          <span className="initials">{this.getInitials()}</span>
+        </div>
+      )
+    }
+
+  }
+
 
   render() {
     return (
-      <List.Item className="contact" style={this.hoverStyle()} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
-        <List.Icon name='github' size='large' verticalAlign='middle' />
-        <List.Content>
+      <Fragment>
+      <List.Item className="contact row" style={this.hoverStyle()} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
+        <br/>
+        {this.renderPhoto()}
+        <List.Content className="contactContent column">
           <List.Header as='a' className="contactName">{this.getName()}</List.Header>
-          <div></div>
-          <List.Description as='a'classname="contactDescription" >
+          <br/>
+          <List.Description as='a'className="contactDescription" >
             {this.props.contact.email}
           </List.Description>
-          <List.Description classname="contactDescription" style={this.showFeatures()}>
-            {this.props.contact.phone}
-          </List.Description>
+
         </List.Content>
-        <List.Content floated='right'>
+        <List.Content floated='right' className="column">
           <div style={this.showFeatures()}>
+            <div className="delete" onClick={this.deleteContact}>X</div>
             <img className="edit" src={editImage} alt="edit-symbol" onClick={this.editContact}/>
             <div className="background-overlay" style={{display: this.state.editting ? 'block' : 'none'}}>
               <div className="overlay" style={{display: this.state.editting ? 'block' : 'none'}}>
                 <EditForm id={this.props.contact.id} contact={this.props.contact} overlayStatus={this.editContact}/>
               </div>
             </div>
-            <div className="delete" onClick={this.deleteContact}>X</div>
           </div>
         </List.Content>
       </List.Item>
+      </Fragment>
     )
   }
 }

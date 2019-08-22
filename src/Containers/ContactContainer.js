@@ -30,7 +30,7 @@ class ContactContainer extends React.Component {
 
   render() {
     return (
-        <List relaxed className="contactContainer">
+        <List divided relaxed className="contactContainer">
           {this.renderContacts()}
         </List>
     )

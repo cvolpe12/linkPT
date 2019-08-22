@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
 .App {
   text-align: center;
 }
@@ -46,7 +48,7 @@
 .contactTitle {
   position: absolute;
   padding-left: 4%;
-  font-family: OpenSans;
+  font-family: 'Open Sans', sans-serif;
   font-size: 50px;
   line-height: 0px;
 
@@ -91,7 +93,7 @@
 }
 
 .contactName {
-  font-family: OpenSans;
+  font-family: 'Open Sans', sans-serif;
   font-size: 25px;
   display: flex;
   padding-left: 20px;
@@ -108,7 +110,7 @@
 
   margin: 10px 0%;
 
-  font-family: OpenSans;
+  font-family: 'Open Sans', sans-serif;
   font-size: 15px;
 
   letter-spacing: 1.26667px;
@@ -161,7 +163,7 @@
   position: relative;
   bottom:20%; /* 25% of parent */
 
-  font-family: OpenSans;
+  font-family: 'Open Sans', sans-serif;
   font-size: 25px;
   line-height: 70px;
 
@@ -186,4 +188,72 @@
 
   position:absolute;
   right: 4%;
+}
+
+input[type=text] {
+    background: transparent;
+    border: none;
+    /* border-bottom: 1px solid #979797; */
+    font-size: 15px;
+    width: 70%;
+}
+
+::placeholder {
+  color: rgba(95, 95, 95, 0.391786);
+  font-family: 'Open Sans', sans-serif;
+}
+
+.inputAttributes {
+
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  /* width: 70%;
+  float: center; */
+  color: #3D8782;
+  display:inline;
+  border-bottom: 1px solid #979797
+}
+
+.details {
+  position: absolute;
+  left: 34.62%;
+  right: 34.53%;
+  top: 53.86%;
+  bottom: 46.02%;
+}
+
+.cancel {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 15px;
+  line-height: 59px;
+  padding-left: 4%;
+  float: left;
+  color: rgba(61, 135, 130, 0.606488);
+}
+
+.addPhoto {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.967957);
+}
+
+.photo-circle {
+  width: 50px;
+  height: 50px;
+  background-color: #3D8782;
+  text-align: center;
+  border-radius: 50%;
+  padding-top: 10px;
+}
+
+.btn {
+  border: none;
+  background-color: inherit;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  line-height: 59px;
+  float: right;
+  color: rgba(61, 135, 130, 0.606488);
 }

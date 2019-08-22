@@ -1,5 +1,7 @@
 import React from "react";
 import { connect } from "react-redux"
+import { Image } from 'semantic-ui-react'
+
 
 class EditForm extends React.Component {
 
@@ -44,22 +46,47 @@ class EditForm extends React.Component {
     })
   }
 
+  renderPhoto = () => {
+    let contact = this.props.contact
+    if (contact.photo) {
+      return <Image className="contactPhoto column" src={contact.photo}/>
+    } else {
+      return (
+        <div className="photo-circle column">
+          <span className="addPhoto">Edit Photo</span>
+        </div>
+      )
+    }
+
+  }
+
   render() {
     return (
       <div>
-        <p onClick={this.props.overlayStatus}>Cancel</p>
+        <p className="cancel" onClick={this.props.overlayStatus}>Cancel</p>
         <form onSubmit={this.handleSubmit}>
-          <input type="submit" value="Save" />
+          <input className="btn" type="submit" value="Save" />
           <br/>
-          <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleChange} placeholder='First Name'/>
           <br/>
-          <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleChange} placeholder='Last Name'/>
           <br/>
-          <label className="label">Phone:</label>
-          <input type="text" name="phone" value={this.state.phone} onChange={this.handleChange} placeholder='+1 XXX XXX XXX'/>
           <br/>
-          <label className="label">Email:</label>
-          <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder='example@gmail.com'/>
+          {this.renderPhoto()}
+          <div className="inputAttributes">
+            <br/>
+            <input type="text" name="first_name" value={this.state.first_name} onChange={this.handleChange} placeholder='First Name'/>
+            <br/>
+            <input type="text" name="last_name" value={this.state.last_name} onChange={this.handleChange} placeholder='Last Name'/>
+          </div>
+          <br/>
+          <div className="inputAttributes">
+            <label className="label">phone: </label>
+            <input type="text" name="phone" value={this.state.phone} onChange={this.handleChange} placeholder='+1 XXX XXX XXX'/>
+          </div>
+          <br/>
+          <div className="inputAttributes">
+            <label className="label">e-mail: </label>
+            <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder='example@gmail.com'/>
+          </div>
         </form>
 
       </div>

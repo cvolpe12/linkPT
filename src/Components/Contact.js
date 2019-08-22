@@ -19,7 +19,7 @@ class Contact extends React.Component {
   }
 
   getInitials = () => {
-    return this.props.contact.first_name[0] + ' ' + this.props.contact.last_name[0]
+    return this.props.contact.first_name[0].toUpperCase() + ' ' + this.props.contact.last_name[0].toUpperCase()
   }
 
   toggleHover = (e) => {
@@ -104,7 +104,7 @@ class Contact extends React.Component {
         <List.Content className="contactContent column">
           <List.Header as='a' className="contactName">{this.getName()}</List.Header>
           <br/>
-          <List.Description as='a'className="contactDescription" >
+          <List.Description className="contactDescription" >
             {this.props.contact.email}
           </List.Description>
 

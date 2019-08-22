@@ -33,9 +33,7 @@
 }
 
 .headerBar {
-  /* border: 1px;
-  border-style: solid;
-  border-color: #979797; */
+
   position: absolute;
   left: 4.5%;
   right: 4.91%;
@@ -47,27 +45,24 @@
 
 .contactTitle {
   position: absolute;
-  /* height: 129px; */
-  /* left: 4.5%; */
-  /* right: 78.85%; */
-  /* top: calc(50% - 129px/2 - 996.5px); */
-
+  padding-left: 4%;
   font-family: OpenSans;
   font-size: 50px;
-  /* padding-left: 40px; */
   line-height: 0px;
 
   color: rgba(0, 0, 0, 0.967957);
-}
-
-.contactContent {
-
 }
 
 .column {
   float: left;
   width: 33.33%;
   padding: 10px;
+  text-align: inherit;
+}
+
+.contactContent {
+  display: block;
+  text-align: left;
 }
 
 /* Clear floats after the columns */
@@ -84,44 +79,34 @@
   display:block;
   background-color:initial;
   padding-top: 33px;
-  padding-right: 40px;
+  padding-right: 5%;
   border: none;
   outline:none;
 }
 
-.contactContainer {
-  border: 1px;
-  border-style: dashed;
-}
+
 
 .contact {
-  border: 1px;
-  border-style: dashed;
-  border-color: orange;
-
+  padding-left: 4%;
 }
 
-
 .contactName {
-  position:auto;
-
-  float: left;
   font-family: OpenSans;
   font-size: 25px;
   display: flex;
   padding-left: 20px;
 
   letter-spacing: 1.9px;
-  padding-bottom: 0;
   color: #050505;
 
   display:inline-block
 }
 
 .contactDescription {
-  /* display: flex; */
 
-  margin: 1% 0%;
+  padding-left: 20px;
+
+  margin: 10px 0%;
 
   font-family: OpenSans;
   font-size: 15px;
@@ -177,7 +162,7 @@
   bottom:20%; /* 25% of parent */
 
   font-family: OpenSans;
-  font-size: 30px;
+  font-size: 25px;
   line-height: 70px;
 
   color: #FFFFFF
@@ -185,15 +170,20 @@
 
 .delete {
   color: #EE7B7B;
-  font-size: 20px;
+  font-size: 22px;
   float: right;
-  padding: 0 5px;
-  display:inline-block
+  padding-right: 5%;
+  padding-bottom: 5px;
+
+  position:absolute;
+  right: 1%;
 }
 .edit {
   width: 20px;
   height: auto;
   float: right;
-  padding-right: 5px;
-  display:inline-block
+  padding-right: 5%;
+
+  position:absolute;
+  right: 4%;
 }

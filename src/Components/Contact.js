@@ -74,7 +74,7 @@ class Contact extends React.Component {
     let index = arr.indexOf(this.props.contact)
     let newContacts = this.removeIndex(arr,index)
     let contactId = this.props.contact.id
-    fetch(`http://localhost:3000/api/v1/contacts/${contactId}`, {
+    fetch(`https://contact-list-link-pt-api.herokuapp.com/${contactId}`, {
       method: "DELETE"
     })
     this.props.addContacts(newContacts)

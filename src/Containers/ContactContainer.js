@@ -8,7 +8,7 @@ class ContactContainer extends React.Component {
 
   componentDidMount(){
     // call backend to get all contacts
-    fetch('http://localhost:3000/api/v1/contacts')
+    fetch('https://contact-list-link-pt-api.herokuapp.com/')
     .then(res => res.json())
     .then(contacts => {
       // store contacts using Redux store

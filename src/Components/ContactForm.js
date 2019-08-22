@@ -19,7 +19,7 @@ class ContactForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    fetch("http://localhost:3000/api/v1/contacts", {
+    fetch("https://contact-list-link-pt-api.herokuapp.com/", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",

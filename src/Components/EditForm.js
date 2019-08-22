@@ -24,7 +24,7 @@ class EditForm extends React.Component {
     // clone redux store of all contacts in order to edit location without mutating original store
     let contacts = [...this.props.allContacts]
     let index = contacts.indexOf(this.props.contact)
-    fetch(`http://localhost:3000/api/v1/contacts/${this.props.id}`, {
+    fetch(`https://contact-list-link-pt-api.herokuapp.com/${this.props.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

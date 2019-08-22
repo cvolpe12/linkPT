@@ -2,26 +2,31 @@ import React from "react";
 import { connect } from "react-redux"
 import { List, Image, Button } from 'semantic-ui-react'
 import editImage from '../edit.png'
+import EditForm from './EditForm'
 
 
 
 class Contact extends React.Component {
 
   state = {
-    hover: false
+    hover: false,
+    editting: false
   }
 
   getName = () => {
+    // method to concat first and last name of contact
     return this.props.contact.first_name + ' ' + this.props.contact.last_name
   }
 
   toggleHover = (e) => {
+    // method to determine if the contact is being hovered
     this.setState({
       hover: !this.state.hover
     })
   }
 
   hoverStyle = () => {
+    // method to alter the styling of the component
     var linkStyle;
     if (this.state.hover) {
       linkStyle = {backgroundColor: 'rgba(232, 232, 232, 0.221666)'}
@@ -32,6 +37,7 @@ class Contact extends React.Component {
   }
 
   showFeatures = () => {
+    // will show phone number of contact
     if (this.state.hover) {
       return {display: 'block'}
     }
@@ -41,10 +47,15 @@ class Contact extends React.Component {
   }
 
   editContact = () => {
-    console.log("editting contact");
+    // will render the EditForm component
+    this.setState({
+      editting: !this.state.editting
+    })
   }
 
   removeIndex = (array, index) => {
+    // concats array to remove element at index
+    // used this method because splice does not render properly
     return [
       ...array.slice(0,index),
       ...array.slice(index +1)
@@ -65,23 +76,30 @@ class Contact extends React.Component {
 
   render() {
     return (
-      <div className="contact" style={this.hoverStyle()} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
-      <List.Item>
-        <Image avatar src={this.props.contact.photo} />
+      <List.Item className="contact" style={this.hoverStyle()} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
+        <List.Icon name='github' size='large' verticalAlign='middle' />
         <List.Content>
-          <List.Header as='a'>{this.getName()}</List.Header>
-          <List.Description>
+          <List.Header as='a' className="contactName">{this.getName()}</List.Header>
+          <div></div>
+          <List.Description as='a'classname="contactDescription" >
             {this.props.contact.email}
           </List.Description>
-          <List.Content floated='right'>
-            <div style={this.showFeatures()}>
-              <img className="edit" src={editImage} alt="edit-symbol" onClick={this.editContact}/>
-              <div className="delete" onClick={this.deleteContact}>X</div>
+          <List.Description classname="contactDescription" style={this.showFeatures()}>
+            {this.props.contact.phone}
+          </List.Description>
+        </List.Content>
+        <List.Content floated='right'>
+          <div style={this.showFeatures()}>
+            <img className="edit" src={editImage} alt="edit-symbol" onClick={this.editContact}/>
+            <div className="background-overlay" style={{display: this.state.editting ? 'block' : 'none'}}>
+              <div className="overlay" style={{display: this.state.editting ? 'block' : 'none'}}>
+                <EditForm id={this.props.contact.id} contact={this.props.contact} overlayStatus={this.editContact}/>
+              </div>
             </div>
-          </List.Content>
+            <div className="delete" onClick={this.deleteContact}>X</div>
+          </div>
         </List.Content>
       </List.Item>
-      </div>
     )
   }
 }
@@ -100,3 +118,26 @@ function mapDispatchToProps(dispatch){
 
 export default connect(mapStateToProps, mapDispatchToProps)(Contact)
 // export default Contact
+// <List.Item className="contact" style={this.hoverStyle()} onMouseEnter={this.toggleHover} onMouseLeave={this.toggleHover}>
+//   <Image avatar src={this.props.contact.photo} />
+//   <List.Content>
+//     <List.Header as='a' className="contactName">{this.getName()}</List.Header>
+//     <List.Description classname="contactDescription" >
+//       {this.props.contact.email}
+//     </List.Description>
+//     <List.Description classname="contactDescription" style={this.showFeatures()}>
+//       {this.props.contact.phone}
+//     </List.Description>
+//     <List.Content floated='right'>
+//       <div style={this.showFeatures()}>
+//         <img className="edit" src={editImage} alt="edit-symbol" onClick={this.editContact}/>
+//         <div className="background-overlay" style={{display: this.state.editting ? 'block' : 'none'}}>
+//           <div className="overlay" style={{display: this.state.editting ? 'block' : 'none'}}>
+//             <EditForm id={this.props.contact.id} contact={this.props.contact} overlayStatus={this.editContact}/>
+//           </div>
+//         </div>
+//         <div className="delete" onClick={this.deleteContact}>X</div>
+//       </div>
+//     </List.Content>
+//   </List.Content>
+// </List.Item>

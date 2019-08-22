@@ -7,27 +7,32 @@ import { List, Image } from 'semantic-ui-react'
 class ContactContainer extends React.Component {
 
   componentDidMount(){
+    // call backend to get all contacts
     fetch('http://localhost:3000/api/v1/contacts')
     .then(res => res.json())
     .then(contacts => {
+      // store contacts using Redux store
       this.props.addContacts(contacts)
     })
   }
 
   renderContacts = () => {
-    console.log(this.props.allContacts);
-    return this.props.allContacts.map(contact => {
+    let contacts = this.props.allContacts
+    // sort contacts because edit causes database to reorder
+    let sortedContacts = contacts.sort(function(a, b) {
+      return a.id - b.id
+    });
+    // render individual contact components
+    return sortedContacts.map(contact => {
         return <Contact key={contact.id} contact={contact}/>
       })
   }
 
   render() {
     return (
-      <div className="contactContainer">
-        <List divided verticalAlign='middle'>
+        <List relaxed className="contactContainer">
           {this.renderContacts()}
         </List>
-      </div>
     )
   }
 }

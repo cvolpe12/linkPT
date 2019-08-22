@@ -1,14 +1,14 @@
 import React from "react";
 import { connect } from "react-redux"
 
-class ContactForm extends React.Component {
+class EditForm extends React.Component {
 
   state = {
-    first_name: '',
-    last_name: '',
-    phone: '',
-    email: '',
-    photo: null
+    first_name: this.props.contact.first_name,
+    last_name: this.props.contact.last_name,
+    phone: this.props.contact.phone,
+    email: this.props.contact.email,
+    photo: this.props.contact.photo
   }
 
   handleChange = e => {
@@ -19,12 +19,15 @@ class ContactForm extends React.Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    fetch("http://localhost:3000/api/v1/contacts", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				"Accepts": "application/json",
-			},
+    // clone redux store of all contacts in order to edit location without mutating original store
+    let contacts = [...this.props.allContacts]
+    let index = contacts.indexOf(this.props.contact)
+    fetch(`http://localhost:3000/api/v1/contacts/${this.props.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
 			body: JSON.stringify({
         first_name: this.state.first_name,
         last_name: this.state.last_name,
@@ -35,18 +38,9 @@ class ContactForm extends React.Component {
 		})
 		.then(res => res.json())
 		.then((response) => {
-      // add contact to Redux store for all contacts
-      this.props.addContact(response)
-      // close overlay
+      contacts[index] = response
+      this.props.addContacts(contacts)
       this.props.overlayStatus()
-      // reset form
-      this.setState({
-        first_name: '',
-        last_name: '',
-        phone: '',
-        email: '',
-        photo: null
-      })
     })
   }
 
@@ -81,11 +75,11 @@ function mapStateToProps(state){
 
 function mapDispatchToProps(dispatch){
   return {
-    addContact: (contact) => {dispatch({type: "ADD_CONTACT", payload: contact })}
+    addContacts: (contacts) => {dispatch({type: "GET_CONTACTS", payload: contacts })},
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ContactForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditForm)
 
 
 // export default ContactForm

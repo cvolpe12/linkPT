@@ -1,10 +1,7 @@
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import Header from './containers/Header'
 import ContactContainer from './containers/ContactContainer'
-
-// import { connect } from "react-redux"
 
 function App() {
   return (

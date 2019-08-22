@@ -8,8 +8,7 @@ class Header extends React.Component {
   }
 
   handleOverlay = () => {
-    console.log(this.state.showOverlay);
-    // e.preventDefault()
+    // will determine if the overlay will be shown or not
     this.setState({
       showOverlay: !this.state.showOverlay
     })
@@ -17,34 +16,18 @@ class Header extends React.Component {
 
   render() {
     return (
-      <div className="top">
-        <div className="header">
-          <p className="contactHeader">My Contacts</p>
+      <div className="contactHeader">
+          <p className="contactTitle">My Contacts</p>
           <button className="addContact" type="button" onClick={this.handleOverlay}>+</button>
+          <div className="headerBar"></div>
           <div className="background-overlay" style={{display: this.state.showOverlay === true ? 'block' : 'none'}}>
             <div className="overlay" style={{display: this.state.showOverlay === true ? 'block' : 'none'}}>
               <ContactForm overlayStatus={this.handleOverlay}/>
             </div>
           </div>
-        </div>
       </div>
     )
   }
 }
-
-
-// function mapStateToProps(state){
-//   return {
-//     showOverlay: state.showOverlay
-//   }
-// }
-//
-// function mapDispatchToProps(dispatch){
-//   return {
-//     showOverlay: (overlay) => {dispatch({type: "SHOW_OVERLAY", payload: overlay })}
-//   }
-// }
-//
-// export default connect(mapStateToProps, mapDispatchToProps)(Header)
 
 export default Header

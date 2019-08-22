@@ -54,7 +54,7 @@ class ContactForm extends React.Component {
     return (
       <div>
         <p className="cancel" onClick={this.props.overlayStatus}>Cancel</p>
-        <form onSubmit={this.handleSubmit}>
+        <form className="contactform" onSubmit={this.handleSubmit}>
           <input className="btn" type="submit" value="Save" />
           <br/>
           <br/>

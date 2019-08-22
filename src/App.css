@@ -198,6 +198,7 @@ input[type=text] {
     width: 70%;
 }
 
+
 ::placeholder {
   color: rgba(95, 95, 95, 0.391786);
   font-family: 'Open Sans', sans-serif;
@@ -207,8 +208,8 @@ input[type=text] {
 
   font-family: 'Open Sans', sans-serif;
   font-size: 20px;
-  /* width: 70%;
-  float: center; */
+  width: 70% !important;
+  /* float: center; */
   color: #3D8782;
   display:inline;
   border-bottom: 1px solid #979797

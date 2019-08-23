@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Header from './containers/Header'
 import ContactContainer from './containers/ContactContainer'
+import Header from './containers/Header'
 
 function App() {
   return (
